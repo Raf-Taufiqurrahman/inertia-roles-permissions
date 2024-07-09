@@ -1,7 +1,13 @@
+import Pagination from '@/Components/Pagination';
+import PostCard from '@/Components/PostCard';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import { Head, usePage } from '@inertiajs/react';
 
 export default function Dashboard({ auth }) {
+
+    // desturct props posts
+    const { posts } =  usePage().props;
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -10,9 +16,12 @@ export default function Dashboard({ auth }) {
             <Head title="Dashboard" />
 
             <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">You're logged in!</div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+                        {posts.data.map((post, i) => <PostCard post={post} key={i}/>)}
+                    </div>
+                    <div className='flex items-center justify-center'>
+                        {posts.last_page !== 1 && (<Pagination links={posts.links}/>)}
                     </div>
                 </div>
             </div>
