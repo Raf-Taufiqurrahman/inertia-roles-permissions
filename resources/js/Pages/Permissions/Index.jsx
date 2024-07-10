@@ -12,8 +12,6 @@ export default function Index({auth}) {
     // destruct permissions props
     const { permissions } = usePage().props;
 
-    console.log(auth);
-
     return (
         <AuthenticatedLayout
             user={auth.user}

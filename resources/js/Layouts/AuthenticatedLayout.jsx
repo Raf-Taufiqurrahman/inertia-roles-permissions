@@ -29,6 +29,11 @@ export default function Authenticated({ user, header, children }) {
                                         Permissions
                                     </NavLink>
                                 }
+                                {hasAnyPermission(['roles-access']) &&
+                                    <NavLink href={route('roles.index')} active={route().current('roles*')}>
+                                        Roles
+                                    </NavLink>
+                                }
                             </div>
                         </div>
 
@@ -103,6 +108,11 @@ export default function Authenticated({ user, header, children }) {
                         {hasAnyPermission(['permissions-access']) &&
                             <ResponsiveNavLink href={route('permissions.index')} active={route().current('permissions*')}>
                                 Permissions
+                            </ResponsiveNavLink>
+                        }
+                        {hasAnyPermission(['roles-access']) &&
+                            <ResponsiveNavLink href={route('roles.index')} active={route().current('roles*')}>
+                                Roles
                             </ResponsiveNavLink>
                         }
                     </div>

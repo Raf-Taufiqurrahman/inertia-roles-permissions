@@ -3,7 +3,7 @@ import React from 'react'
 export default function Input({label, type, className, errors, ...props}) {
     return (
         <div className='flex flex-col gap-2'>
-            <label className='text-gray-600 dark:text-gray-500 text-sm'>
+            <label className='text-gray-600 text-sm'>
                 {label}
             </label>
             <input
