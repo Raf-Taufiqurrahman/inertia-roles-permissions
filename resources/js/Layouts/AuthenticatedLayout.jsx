@@ -3,8 +3,8 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import Dropdown from '@/Components/Dropdown';
 import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
-import { Link } from '@inertiajs/react';
-
+import { Link, usePage } from '@inertiajs/react';
+import hasAnyPermission from '@/Utils/Permissions';
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
@@ -24,6 +24,11 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+                                {hasAnyPermission(['permissions-access']) &&
+                                    <NavLink href={route('permissions.index')} active={route().current('permissions*')}>
+                                        Permissions
+                                    </NavLink>
+                                }
                             </div>
                         </div>
 
@@ -95,6 +100,11 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
+                        {hasAnyPermission(['permissions-access']) &&
+                            <ResponsiveNavLink href={route('permissions.index')} active={route().current('permissions*')}>
+                                Permissions
+                            </ResponsiveNavLink>
+                        }
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
@@ -119,7 +129,9 @@ export default function Authenticated({ user, header, children }) {
                 </header>
             )}
 
-            <main>{children}</main>
+            <main>
+                {children}
+            </main>
         </div>
     );
 }
