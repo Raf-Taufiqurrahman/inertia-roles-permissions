@@ -4,7 +4,7 @@ const Card = ({ title, className, children }) => {
     return (
         <>
             <div className={`p-4 rounded-t-lg border ${className} bg-white`}>
-                <div className='flex items-center gap-2 font-semibold text-sm text-gray-700'>
+                <div className='flex items-center gap-2 font-semibold text-sm text-gray-700 uppercase'>
                     {title}
                 </div>
             </div>

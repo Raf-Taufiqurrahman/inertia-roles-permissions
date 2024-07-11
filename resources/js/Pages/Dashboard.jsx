@@ -1,5 +1,6 @@
 import Pagination from '@/Components/Pagination';
 import PostCard from '@/Components/PostCard';
+import Search from '@/Components/Search';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, usePage } from '@inertiajs/react';
 
@@ -17,6 +18,9 @@ export default function Dashboard({ auth }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className='mb-4'>
+                        <Search url={route('dashboard')} placeholder={'Search posts data by title or author...'}/>
+                    </div>
                     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                         {posts.data.map((post, i) => <PostCard post={post} key={i}/>)}
                     </div>

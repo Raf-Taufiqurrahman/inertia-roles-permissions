@@ -1,6 +1,6 @@
 import { usePage } from "@inertiajs/react";
 
-export default function hasAnyPermission(permissions) {
+export default function hasAnyPermission(permissions){
 
     // destruct auth from usepage props
     const { auth } = usePage().props
@@ -10,11 +10,6 @@ export default function hasAnyPermission(permissions) {
 
     // get super-admin role from props auth
     let superAdmin = auth.super;
-
-    // do it when super admin true
-    if(superAdmin)
-        // return true;
-        return true;
 
     // define has permission is false
     let hasPermission = false;
@@ -27,6 +22,11 @@ export default function hasAnyPermission(permissions) {
             hasPermission = true;
     });
 
-    // return has permissions
-    return hasPermission;
+    // do it when super admin true
+    if(superAdmin)
+        // return true;
+        return true;
+    else
+        // return has permissions
+        return hasPermission;
 }

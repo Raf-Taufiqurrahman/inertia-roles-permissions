@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -21,6 +22,8 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     // dashbaord route
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    // posts route
+    Route::resource('posts', PostController::class)->except('show', 'create', 'edit');
     // permissions route
     Route::resource('permissions', PermissionController::class)->except('show');
     // roles route

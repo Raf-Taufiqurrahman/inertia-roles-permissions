@@ -24,6 +24,11 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
                                 </NavLink>
+                                {hasAnyPermission(['posts-access']) &&
+                                    <NavLink href={route('posts.index')} active={route().current('posts*')}>
+                                        Posts
+                                    </NavLink>
+                                }
                                 {hasAnyPermission(['permissions-access']) &&
                                     <NavLink href={route('permissions.index')} active={route().current('permissions*')}>
                                         Permissions
@@ -110,6 +115,11 @@ export default function Authenticated({ user, header, children }) {
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
+                        {hasAnyPermission(['posts-access']) &&
+                            <ResponsiveNavLink href={route('posts.index')} active={route().current('posts*')}>
+                                Posts
+                            </ResponsiveNavLink>
+                        }
                         {hasAnyPermission(['permissions-access']) &&
                             <ResponsiveNavLink href={route('permissions.index')} active={route().current('permissions*')}>
                                 Permissions

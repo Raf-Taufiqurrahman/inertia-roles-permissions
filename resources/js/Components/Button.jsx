@@ -2,7 +2,7 @@ import { Link, useForm } from '@inertiajs/react'
 import { IconArrowBack, IconCheck, IconPencilCog, IconPlus, IconTrash } from '@tabler/icons-react';
 import React from 'react'
 import Swal from 'sweetalert2';
-export default function Button({ type, url }) {
+export default function Button({ type, url, className, children, ...props }) {
 
     const { delete : destroy } = useForm();
 
@@ -37,6 +37,11 @@ export default function Button({ type, url }) {
                 <Link href={url} className='px-4 py-2 text-sm border rounded-lg bg-white text-gray-700 flex items-center gap-2 hover:bg-gray-100'>
                     <IconPlus size={18} strokeWidth={1.5}/> <span className='hidden lg:flex'>Create New Data</span>
                 </Link>
+            }
+            {type === 'modal' &&
+                <button {...props} type='button' className={`${className} px-4 py-2 text-sm border rounded-lg flex items-center gap-2`}>
+                    {children}
+                </button>
             }
             {type === 'submit' &&
                 <button type='submit' className='px-4 py-2 text-sm rounded-lg border border-teal-100 bg-teal-50 text-teal-500 flex items-center gap-2 hover:bg-teal-100'>

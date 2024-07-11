@@ -13,7 +13,12 @@ class DashboardController extends Controller
     public function __invoke(Request $request)
     {
         // get posts
-        $posts = Post::with('user')->latest()->paginate(12);
+        $posts = Post::with('user')
+            ->when($request->search,function($query) use($request){
+                $query->where('title', 'like', '%'.$request->search.'%')
+                    ->orWhereHas('user', fn($query) => $query->where('name', 'like', '%'.$request->search.'%'));
+            })
+            ->latest()->paginate(12);
 
         // render view
         return inertia('Dashboard', ['posts' => $posts]);
