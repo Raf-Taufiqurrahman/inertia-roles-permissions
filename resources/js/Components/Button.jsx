@@ -34,27 +34,27 @@ export default function Button({ type, url }) {
     return (
         <>
             {type === 'add' &&
-                <Link href={url} className='px-4 py-2 text-sm border rounded-md bg-white text-gray-700 flex items-center gap-2 hover:bg-gray-100'>
-                    <IconPlus size={18} strokeWidth={1.5}/> <span className='hidden md:flex'>Create New Data</span>
+                <Link href={url} className='px-4 py-2 text-sm border rounded-lg bg-white text-gray-700 flex items-center gap-2 hover:bg-gray-100'>
+                    <IconPlus size={18} strokeWidth={1.5}/> <span className='hidden lg:flex'>Create New Data</span>
                 </Link>
             }
             {type === 'submit' &&
-                <button type='submit' className='px-4 py-2 text-sm rounded-md border border-teal-100 bg-teal-50 text-teal-500 flex items-center gap-2 hover:bg-teal-100'>
+                <button type='submit' className='px-4 py-2 text-sm rounded-lg border border-teal-100 bg-teal-50 text-teal-500 flex items-center gap-2 hover:bg-teal-100'>
                     <IconCheck size={16} strokeWidth={1.5}/> Save Data
                 </button>
             }
             {type === 'cancel' &&
-                <Link href={url} className='px-4 py-2 text-sm rounded-md border border-rose-100 bg-rose-50 text-rose-500 flex items-center gap-2 hover:bg-rose-100'>
+                <Link href={url} className='px-4 py-2 text-sm rounded-lg border border-rose-100 bg-rose-50 text-rose-500 flex items-center gap-2 hover:bg-rose-100'>
                     <IconArrowBack size={16} strokeWidth={1.5}/> Go Back
                 </Link>
             }
             {type === 'edit' &&
-                <Link href={url} className='px-4 py-2 rounded-md bg-orange-50 text-orange-500 flex items-center gap-2 hover:bg-orange-100'>
+                <Link href={url} className='px-4 py-2 rounded-lg bg-orange-50 text-orange-500 flex items-center gap-2 hover:bg-orange-100'>
                     <IconPencilCog size={16} strokeWidth={1.5}/>
                 </Link>
             }
             {type === 'delete' &&
-                <button onClick={() => handleDeleteData(url)} className='px-4 py-2 rounded-md bg-rose-50 text-rose-500 flex items-center gap-2 hover:bg-rose-100'>
+                <button onClick={() => handleDeleteData(url)} className='px-4 py-2 rounded-lg bg-rose-50 text-rose-500 flex items-center gap-2 hover:bg-rose-100'>
                     <IconTrash size={18} strokeWidth={1.5}/>
                 </button>
             }
