@@ -30,7 +30,7 @@ class UserController extends Controller implements HasMiddleware
         $users = User::with('roles')
             ->when(request('search'), fn($query) => $query->where('name', 'like', '%'.request('search').'%'))
             ->latest()
-            ->paginate(6);
+            ->paginate(6)->withQueryString();
 
         // render view
         return inertia('Users/Index', ['users' => $users]);

@@ -30,7 +30,7 @@ class RoleController extends Controller implements HasMiddleware
             ->with('permissions:id,name')
             ->when($request->search,fn($search) => $search->where('name', 'like', '%'.$request->search.'%'))
             ->latest()
-            ->paginate(6);
+            ->paginate(6)->withQueryString();
 
         // render view
         return inertia('Roles/Index', ['roles' => $roles]);

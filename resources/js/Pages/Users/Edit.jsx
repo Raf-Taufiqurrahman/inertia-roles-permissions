@@ -40,7 +40,7 @@ export default function Edit({auth}) {
             onSuccess: () => {
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Data created successfully!',
+                    text: 'Data updated successfully!',
                     icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
@@ -52,11 +52,11 @@ export default function Edit({auth}) {
     return (
         <AuthenticatedLayout
             user={auth.user}
-            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Create User</h2>}
+            header={<h2 className="font-semibold text-xl text-gray-800 leading-tight">Edit User</h2>}
         >
-            <Head title={'Create Users'}/>
+            <Head title={'Edit Users'}/>
             <Container>
-                <Card title={'Create new user'}>
+                <Card title={'Edit User'}>
                     <form onSubmit={handleUpdateData}>
                         <div className='mb-4'>
                             <Input label={'Name'} type={'text'} value={data.name} onChange={e => setData('name', e.target.value)} errors={errors.name} placeholder="Input name user.."/>

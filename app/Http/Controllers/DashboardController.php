@@ -18,7 +18,7 @@ class DashboardController extends Controller
                 $query->where('title', 'like', '%'.$request->search.'%')
                     ->orWhereHas('user', fn($query) => $query->where('name', 'like', '%'.$request->search.'%'));
             })
-            ->latest()->paginate(12);
+            ->latest()->paginate(12)->withQueryString();
 
         // render view
         return inertia('Dashboard', ['posts' => $posts]);

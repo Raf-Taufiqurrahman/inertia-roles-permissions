@@ -29,7 +29,7 @@ class PostController extends Controller implements HasMiddleware
             ->whereUserId($request->user()->id)
             ->when($request->search, fn($query) => $query->where('title', 'like', '%'.$request->search.'%'))
             ->latest()
-            ->paginate(6);
+            ->paginate(6)->withQueryString();
 
         // render view
         return inertia('Posts/Index', ['posts' => $posts]);

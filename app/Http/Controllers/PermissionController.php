@@ -28,7 +28,7 @@ class PermissionController extends Controller implements HasMiddleware
         $permissions = Permission::select('id', 'name')
             ->when($request->search,fn($search) => $search->where('name', 'like', '%'.$request->search.'%'))
             ->latest()
-            ->paginate(6);
+            ->paginate(6)->withQueryString();
 
         // render view
         return inertia('Permissions/Index', ['permissions' => $permissions]);

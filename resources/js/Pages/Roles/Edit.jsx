@@ -32,7 +32,7 @@ export default function Edit({auth}) {
     }
 
     // define method handleUpdateData
-    const handleStoreData = async (e) => {
+    const handleUpdateData = async (e) => {
         e.preventDefault();
 
         post(route('roles.update', role.id), {
@@ -56,7 +56,7 @@ export default function Edit({auth}) {
             <Head title={'Edit Roles'}/>
             <Container>
                 <Card title={'Edit role'}>
-                    <form onSubmit={handleStoreData}>
+                    <form onSubmit={handleUpdateData}>
                         <div className='mb-4'>
                             <Input label={'Role Name'} type={'text'} value={data.name} onChange={e => setData('name', e.target.value)} errors={errors.name} placeholder="Input role name.."/>
                         </div>
